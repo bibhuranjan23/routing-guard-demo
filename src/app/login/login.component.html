@@ -1,0 +1,9 @@
+<div>
+    <label for="username">UserName</label>
+    <input type="text" #username />
+    <label for="password">Password</label>
+    <input type="password" #password/>
+    <button (click)="login(username.value,password.value)">Login</button>
+</div>
+{{username.value}}
+{{password.value}}
