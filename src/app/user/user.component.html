@@ -1,0 +1,52 @@
+<div>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+        <label for="id">ID</label>
+        <input type="text" name="id" #id="ngModel" required minlength="4" [(ngModel)]="user.id"/>
+        <div *ngIf="!id?.valid && (id?.dirty || id?.touched)">
+            Invalid Id
+            <div *ngIf="id?.errors['required']">
+                ID is required
+                </div>
+                <div *ngIf="id.errors">
+              
+                
+                </div>
+        </div>
+        <br/>
+        <label for="email">Email</label>
+        <input type="email" name="email" [(ngModel)]="user.email"/>
+        <br/>
+        <label for="userName">UserName</label>
+        <input type="text" name="userName" [(ngModel)]="user.username"/>
+        <br/>
+        <label for="password">Password</label>
+        <input type="password" name="password" ngModel/>
+        <br/>
+        <div ngModelGroup="name">
+            <label for="fname"></label>
+            <input type="text" name="fname" ngModel/>
+            <label for="lname"></label>
+            <input type="text" name="lname" ngModel/>
+        </div>
+        <div ngModelGroup="address">
+            <div ngModelGroup="geoLocation">
+                <label for="longitude"></label>
+                <input type="text" name="longitude" ngModel/>
+                <label for="latitude"></label>
+                <input type="text" name="latitude" ngModel/>
+            </div>
+            <label for="city"></label>
+            <input type="text" name="city" ngModel/>
+            <label for="zipcode"></label>
+            <input type="text" name="zipcode" ngModel/>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+<pre>
+    {{userForm.value|json}}
+
+    <hr/>
+    {{user|json}}
+</pre>
